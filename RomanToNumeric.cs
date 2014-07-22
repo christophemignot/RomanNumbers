@@ -1,22 +1,24 @@
-﻿namespace RomanNumbers
+﻿using System.Text;
+
+namespace RomanNumbers
 {
     using System.Collections.Generic;
     using System.Globalization;
 
     class RomanToNumeric
     {
-        public static readonly Dictionary<string, int> ReferenceConvert = new Dictionary<string, int>();
-        public static readonly Dictionary<string, int> TwoCharReferenceConvert = new Dictionary<string, int>();
+        public static readonly IDictionary<char, int> ReferenceConvert = new Dictionary<char, int>();
+        public static readonly IDictionary<string, int> TwoCharReferenceConvert = new Dictionary<string, int>();
 
         static RomanToNumeric()
         {
-            ReferenceConvert.Add("I", 1);
-            ReferenceConvert.Add("V", 5);
-            ReferenceConvert.Add("X", 10);
-            ReferenceConvert.Add("L", 50);
-            ReferenceConvert.Add("C", 100);
-            ReferenceConvert.Add("D", 500);
-            ReferenceConvert.Add("M", 1000);
+            ReferenceConvert.Add('I', 1);
+            ReferenceConvert.Add('V', 5);
+            ReferenceConvert.Add('X', 10);
+            ReferenceConvert.Add('L', 50);
+            ReferenceConvert.Add('C', 100);
+            ReferenceConvert.Add('D', 500);
+            ReferenceConvert.Add('M', 1000);
 
             TwoCharReferenceConvert.Add("IV", 4);
             TwoCharReferenceConvert.Add("IX", 9);
@@ -39,9 +41,9 @@
             }
             foreach (char theChar in romanToConvert)
             {
-                result += ReferenceConvert[theChar.ToString(CultureInfo.InvariantCulture)];
+                result += ReferenceConvert[theChar];
             }
-            //result += romanToConvert.Sum(theChar => ReferenceConvert[theChar.ToString(CultureInfo.InvariantCulture)]);
+            //result += romanToConvert.Sum(theChar => ReferenceConvert[theChar]);
             return result;
         }
     }
